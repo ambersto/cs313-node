@@ -1,0 +1,22 @@
+{
+  "name": "cs313-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ambersto/cs313-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ambersto/cs313-node/issues"
+  },
+  "homepage": "https://github.com/ambersto/cs313-node#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
