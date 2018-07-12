@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Schedule</title>
+	<script
+  		src="https://code.jquery.com/jquery-3.2.1.min.js"
+  		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  		crossorigin="anonymous">
+	</script>
+	<script src="eventScheduler.js"></script>
+</head>
+<body>
+
+<form>
+<div>
+	<input type="text" id="firstname" placeholder="First name"><br>
+	<input type="text" id="lastname" placeholder="Last name"><br>
+	<button onclick="login()">Log in</button>
+
+	<input type="text" id="eventName" placeholder="Name of event"><br>
+	<input type="datetime-local" id="eventDate"><br>
+	<textarea rows="4" cols="50" id="notes" placeholder="Notes"></textarea><br>
+	<input type="text" id="venueName" placeholder="Name of venue"><br>
+	<input type="text" id="street" placeholder="Street address"><br>
+	<input type="text" id="city" placeholder="City"><br>
+	<input type="text" id="state" placeholder="State"><br>
+	<input type="text" id="zip" placeholder="Zip code"><br>
+	<input type="text" id="phone" placeholder="Phone number"><br>
+	<input type="text" id="email" placeholder="Email"><br>
+	<br>
+	<div id="events"></div>
+</div>
+</form>
+
+</body>
+</html>
