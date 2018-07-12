@@ -241,7 +241,7 @@ function updateEvent(request, response) {
 // get user id
 function getUserIdFromDB(firstname, lastname, callback) {
 	console.log("Getting user ID from DB");
-	var sql = "SELECT id FROM author WHERE first_name = $1::VARCHAR AND last_name = $2::VARCHAR";
+	var sql = "SELECT * FROM author WHERE first_name = $1::VARCHAR AND last_name = $2::VARCHAR";
 	var params = [firstname, lastname];
 	pool.query(sql, params, function(err, result) {
 	if (err) {
