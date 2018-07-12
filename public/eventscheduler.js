@@ -15,3 +15,6 @@ function login(){
 		}
 	});
 }
+
+// TODO: page only shows result briefly, then it disappears... why?
+// TODO: result is displayed as {object Object} even though query is correctly returning author id
