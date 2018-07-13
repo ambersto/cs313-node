@@ -3,7 +3,7 @@ function loadVenueList(){
 		if (result) {
 
 		} else {
-
+			
 		}
 	});
 }
@@ -19,7 +19,7 @@ function login(){
 
 	$.get("/getUserId", params, function(result) {
 		if (result) {
-			$("#events").text("<h1>User id is: " + JSON.stringify(result) + "</h1>");
+			$("#events").text("User id is: " + JSON.stringify(result));
 		} else {
 			$("#events").text("Error logging in");
 		}
