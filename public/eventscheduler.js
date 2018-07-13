@@ -20,7 +20,7 @@ function login(){
 	$.get("/getUserId", params, function(result) {
 		if (result) {
 			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result) + "</li>");
-			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result.rows) + "</li>");
+			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</li>");
 		} else {
 			$("#loginError").text("Error logging in");
 		}
