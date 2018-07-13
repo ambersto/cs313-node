@@ -72,8 +72,8 @@ function getUserId(request, response) {
 
 // add a new user
 function addUser(request, response) {
-	var firstname = request.query.firstname;
-	var lastname = request.query.lastname;
+	var firstname = request.body.firstname;
+	var lastname = request.body.lastname;
 	console.log("Adding new user");
 	addUserToDB(firstname, lastname, function (error, result) {
 	if(error || result == null) {
