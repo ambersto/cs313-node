@@ -19,7 +19,7 @@ function login(){
 
 	$.get("/getUserId", params, function(result) {
 		if (result) {
-			$("#events").append("User id is: " + JSON.stringify(result));
+			$("#events").append("<li>User id is: " + JSON.stringify(result) + "</li>");
 		} else {
 			$("#events").text("Error logging in");
 		}
