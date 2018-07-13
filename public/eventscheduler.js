@@ -24,19 +24,27 @@ function login(){
 			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result) + "</span>");
 			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</span>");
 		} else {
-			$.post("/addUser", params, function(result) {
-				if(result) {
-					login();
-				} else {
-					$("#loginError").text("Error logging in");
-				}
-			});
+			$("#loginError").text("Error logging in");
 		}
 	});
 }
 
-function addEvent(){
-
+function addUser(){
+	var firstname = $("#firstname").val();
+	var lastname = $("#lastname").val();
+	
+	var params = {
+		firstname: firstname,
+		lastname: lastname
+	};
+	
+	$.post("/addUser", params, function(result) {
+		if(result) {
+			login();
+		} else {
+			$("#loginError").text("Error logging in");
+		}
+	});
 }
 
 
