@@ -12,7 +12,7 @@
 <body onload="loadVenueList(); return false;">
 
 <form>
-<div>
+<div style="background-color: black;">
 	<input type="text" id="firstname" placeholder="First name"><br>
 	<input type="text" id="lastname" placeholder="Last name"><br>
 	<button onclick="login(); return false;">Log in</button><br>
@@ -22,6 +22,7 @@
 	<input type="datetime-local" id="eventDate"><br>
 	<textarea rows="4" cols="50" id="notes" placeholder="Notes"></textarea><br>
 	<select id="venueList"></select><br>
+	<button>Add event</button><br>
 	<br>
 	<input type="text" id="venueName" placeholder="Name of venue"><br>
 	<input type="text" id="street" placeholder="Street address"><br>
@@ -30,7 +31,7 @@
 	<input type="text" id="zip" placeholder="Zip code"><br>
 	<input type="text" id="phone" placeholder="Phone number"><br>
 	<input type="text" id="email" placeholder="Email"><br>
-	<button>Add event</button><br>
+	<button>Add venue</button><br>
 	<br><br>
 	<div id="events"></div>
 </div>
