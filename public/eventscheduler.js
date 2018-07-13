@@ -1,9 +1,11 @@
 function loadVenueList(){
 	$.get("/getVenues", function(result) {
 		if (result) {
-
+			for (i in result){
+				$("#venueList").append("<option value=\"" + result[i].id + "\">" + result[i].name + "</option>");
+			}
 		} else {
-
+			$("#venueList").append("<option>No venues available</option>")
 		}
 	});
 }

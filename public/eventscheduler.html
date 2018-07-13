@@ -9,7 +9,7 @@
 	</script>
 	<script src="eventscheduler.js"></script>
 </head>
-<body>
+<body onload="loadVenueList(); return false;">
 
 <form>
 <div>
@@ -21,6 +21,8 @@
 	<input type="text" id="eventName" placeholder="Name of event"><br>
 	<input type="datetime-local" id="eventDate"><br>
 	<textarea rows="4" cols="50" id="notes" placeholder="Notes"></textarea><br>
+	<select id="venueList"></select><br>
+	<br>
 	<input type="text" id="venueName" placeholder="Name of venue"><br>
 	<input type="text" id="street" placeholder="Street address"><br>
 	<input type="text" id="city" placeholder="City"><br>
