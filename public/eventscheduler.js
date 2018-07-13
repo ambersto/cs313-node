@@ -24,9 +24,19 @@ function login(){
 			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result) + "</li>");
 			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</li>");
 		} else {
-			$("#loginError").text("Error logging in");
+			$.get("/addUser", params, function(result) {
+				if(result) {
+					login();
+				} else {
+					$("#loginError").text("Error logging in");
+				}
+			});
 		}
 	});
+}
+
+function addEvent(){
+
 }
 
 
