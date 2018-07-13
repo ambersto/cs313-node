@@ -20,12 +20,12 @@ function login(){
 	};
 
 	$.get("/getUserId", params, function(result) {
-		if (result.rows) {
+		if (result[0].id) {
 			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result) + "</li>");
 			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</li>");
 		} else {
-			$.get("/addUser", params, function(result) {
-				if(result.rows) {
+			$.post("/addUser", params, function(result) {
+				if(result) {
 					login();
 				} else {
 					$("#loginError").text("Error logging in");
