@@ -20,9 +20,9 @@ function login(){
 	};
 
 	$.get("/getUserId", params, function(result) {
-		if (result[0].id) {
-			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result) + "</li>");
-			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</li>");
+		if (result[0].id > 0) {
+			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result) + "</span>");
+			$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</span>");
 		} else {
 			$.post("/addUser", params, function(result) {
 				if(result) {
