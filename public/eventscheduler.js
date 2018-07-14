@@ -21,7 +21,7 @@ function login(){
 
 	$.get("/getUserId", params, function(result) {
 		if (result) {
-			if(JSON.stringify(result[0].id) == "[]"){
+			if(JSON.stringify(result) == "[]"){
 				$("#loginError").append("<span style=\"color: blue;\">No id found</span>");				
 			} else {
 				$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</span>");
