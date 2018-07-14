@@ -12,6 +12,15 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
+var session = require('express-session')
+
+// set up sessions
+app.use(session({
+  secret: 'my-super-secret-secret!',
+  resave: false,
+  saveUninitialized: true
+}))
+
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
@@ -71,6 +80,7 @@ function getUserId(request, response) {
 	if(error || result == null) {
 		response.status(500).json({success: false, data: error});
 	} else {
+		request.session.userId = result[0].id;
 		response.status(200).json(result);
 	}
 });
@@ -92,13 +102,13 @@ function addUser(request, response) {
 
 // add a new venue
 function addVenue(request, response) {
-	var venueName = request.query.venueName;
-	var street = request.query.street;
-	var city = request.query.city;
-	var state = request.query.state;
-	var zip = request.query.zip;
-	var phone = request.query.phone;
-	var email = request.query.email;
+	var venueName = request.body.venueName;
+	var street = request.body.street;
+	var city = request.body.city;
+	var state = request.body.state;
+	var zip = request.body.zip;
+	var phone = request.body.phone;
+	var email = request.body.email;
 	console.log("Adding new venue");
 	addVenueToDB(venueName, street, city, state, zip, phone, email, function (error, result) {
 	if(error || result == null) {
@@ -111,11 +121,11 @@ function addVenue(request, response) {
 
 // add a new event
 function addEvent(request, response) {
-	var eventName = request.query.eventName;
-	var eventDate = request.query.eventDate;
-	var venueId = request.query.venueId;
-	var authorId = request.query.authorId;
-	var notes = request.query.notes;
+	var eventName = request.body.eventName;
+	var eventDate = request.body.eventDate;
+	var venueId = request.body.venueId;
+	var authorId = request.body.authorId;
+	var notes = request.body.notes;
 	console.log("Adding new event");
 	addEventToDB(eventName, eventDate, venueId, authorId, notes, function (error, result) {
 	if(error || result == null) {
@@ -205,14 +215,14 @@ function getUserDetails(request, response) {
 
 // update a venue
 function updateVenue(request, response) {
-	var venueId = request.query.venueId;
-	var venueName = request.query.venueName;
-	var street = request.query.street;
-	var city = request.query.city;
-	var state = request.query.state;
-	var zip = request.query.zip;
-	var phone = request.query.phone;
-	var email = request.query.email;
+	var venueId = request.body.venueId;
+	var venueName = request.body.venueName;
+	var street = request.body.street;
+	var city = request.body.city;
+	var state = request.body.state;
+	var zip = request.body.zip;
+	var phone = request.body.phone;
+	var email = request.body.email;
 	console.log("Updating venue");
 	updateVenueInDB(venueId, venueName, street, city, state, zip, phone, email, function (error, result) {
 	if(error || result == null) {
@@ -225,12 +235,12 @@ function updateVenue(request, response) {
 
 // update an event
 function updateEvent(request, response) {
-	var eventId = request.query.eventId;
-	var eventName = request.query.eventName;
-	var eventDate = request.query.eventDate;
-	var venueId = request.query.venueId;
-	var authorId = request.query.authorId;
-	var notes = request.query.notes;
+	var eventId = request.body.eventId;
+	var eventName = request.body.eventName;
+	var eventDate = request.body.eventDate;
+	var venueId = request.body.venueId;
+	var authorId = request.body.authorId;
+	var notes = request.body.notes;
 	console.log("Updating event");
 	updateEventInDB(eventId, eventName, eventDate, venueId, authorId, notes, function (error, result) {
 	if(error || result == null) {
