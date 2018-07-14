@@ -63,9 +63,10 @@ function addVenue(){
 
 	$.get("/addVenue", params, function(result) {
 		if (result) {
+			console.log("Venue added")
 			loadVenueList();
 		} else {
-			$("#venueList").append("<option>No venues available</option>")
+			console.log("Error adding venue");
 		}
 	});
 }
