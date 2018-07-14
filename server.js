@@ -80,8 +80,8 @@ function getUserId(request, response) {
 	if(error || result == null) {
 		response.status(500).json({success: false, data: error});
 	} else {
-		request.session.userId = result[0].id;
-		console.log("Session user ID: " + request.session.userId);
+		//request.session.userId = result[0].id;
+		//console.log("Session user ID: " + request.session.userId);
 		response.status(200).json(result);
 	}
 });
