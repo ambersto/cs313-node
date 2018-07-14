@@ -1,4 +1,5 @@
 function loadVenueList(){
+	$("venueList").empty();
 	$.get("/getVenues", function(result) {
 		if (result) {
 			for (i in result){
@@ -21,17 +22,19 @@ function login(){
 
 	$.get("/getUserId", params, function(result) {
 		if (result) {
+			// If user has not been created, make one
 			if(JSON.stringify(result) == "[]"){
-				$("#loginError").append("<span style=\"color: blue;\">No id found</span>");
 				$.post("/addUser", params, function(result) {
 					if(result) {
+						// Once a new user is created, log them out
 						login();
 					} else {
 						$("#loginError").text("Error logging in");
 					}
 				});
 			} else {
-				$("#loginError").append("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</span>");
+				// Debugging statement - display the user's id when they log in
+				$("#loginError").text("<span style=\"color: red;\">User id is: " + JSON.stringify(result[0].id) + "</span>");
 			}
 		} else {
 			$("#loginError").text("Error logging in");
@@ -39,20 +42,30 @@ function login(){
 	});
 }
 
-function addUser(){
-	var firstname = $("#firstname").val();
-	var lastname = $("#lastname").val();
-	
+function addVenue(){
+	var venueName = $("#venueName").val();
+	var venueName = $("#street").val();
+	var venueName = $("#city").val();
+	var venueName = $("#state").val();
+	var venueName = $("#zip").val();
+	var venueName = $("#phone").val();
+	var venueName = $("#email").val();
+
 	var params = {
-		firstname: firstname,
-		lastname: lastname
+		venueName: venueName,
+		street: street,
+		city: city,
+		state: state,
+		zip: zip,
+		phone: phone,
+		email: email
 	};
 
-	$.post("/addUser", params, function(result) {
-		if(result) {
-			$("#loginError").append("<span style=\"color: red;\">New user added</span>");
+	$.get("/addVenue", params, function(result) {
+		if (result) {
+			loadVenueList();
 		} else {
-			$("#loginError").text("Error logging in");
+			$("#venueList").append("<option>No venues available</option>")
 		}
 	});
 }

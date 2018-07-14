@@ -125,7 +125,7 @@ function addEvent(request, response) {
 	var eventName = request.body.eventName;
 	var eventDate = request.body.eventDate;
 	var venueId = request.body.venueId;
-	var authorId = request.body.authorId;
+	var authorId = request.session.userId;
 	var notes = request.body.notes;
 	console.log("Adding new event");
 	addEventToDB(eventName, eventDate, venueId, authorId, notes, function (error, result) {
@@ -240,7 +240,7 @@ function updateEvent(request, response) {
 	var eventName = request.body.eventName;
 	var eventDate = request.body.eventDate;
 	var venueId = request.body.venueId;
-	var authorId = request.body.authorId;
+	var authorId = request.session.userId;
 	var notes = request.body.notes;
 	console.log("Updating event");
 	updateEventInDB(eventId, eventName, eventDate, venueId, authorId, notes, function (error, result) {
