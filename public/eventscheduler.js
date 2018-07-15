@@ -45,12 +45,12 @@ function addVenue(){
 	console.log("inside addVenue function");
 
 	var venueName = $("#venueName").val();
-	var venueName = $("#street").val();
-	var venueName = $("#city").val();
-	var venueName = $("#state").val();
-	var venueName = $("#zip").val();
-	var venueName = $("#phone").val();
-	var venueName = $("#email").val();
+	var street = $("#street").val();
+	var city = $("#city").val();
+	var state = $("#state").val();
+	var zip = $("#zip").val();
+	var phone = $("#phone").val();
+	var email = $("#email").val();
 
 	var params = {
 		venueName: venueName,
