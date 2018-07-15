@@ -73,7 +73,7 @@ function addVenue(){
 
 function addEvent(){
 	console.log("inside addEvent");
-	var eventName = $("#eventName").val();
+	/*var eventName = $("#eventName").val();
 	var eventDate = $("#eventDate").val();
 	var venueId = $("#venueList").val();
 	var notes = $("#notes").val();
