@@ -43,8 +43,6 @@ function login(){
 }
 
 function addVenue(){
-	console.log("inside addVenue function");
-
 	var venueName = $("#venueName").val();
 	var street = $("#street").val();
 	var city = $("#city").val();
@@ -73,6 +71,27 @@ function addVenue(){
 	});
 }
 
+function addEvent(){
+	var eventName = $("#eventName");
+	var eventDate = $("#eventDate");
+	var venueId = $("#venueId");
+	var notes = $("#notes");
+
+	var params = {
+		eventName: eventName,
+		eventDate: eventDate,
+		venueId: venueId,
+		notes: notes
+	};
+
+	$.post("/addEvent", params, function(result) {
+		if(result) {
+			console.log("Event added");
+		} else {
+			console.log("Error adding event");
+		}
+	})
+}
 
 
 /*******************************************
