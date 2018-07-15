@@ -42,6 +42,8 @@ function login(){
 }
 
 function addVenue(){
+	console.log("inside addVenue function");
+
 	var venueName = $("#venueName").val();
 	var venueName = $("#street").val();
 	var venueName = $("#city").val();
