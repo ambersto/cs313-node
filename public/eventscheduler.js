@@ -1,4 +1,5 @@
 function loadVenueList(){
+	$("#venueList").empty();
 	$.get("/getVenues", function(result) {
 		if (result) {
 			for (i in result){
@@ -65,7 +66,7 @@ function addVenue(){
 	$.post("/addVenue", params, function(result) {
 		if (result) {
 			console.log("Venue added")
-			//loadVenueList();
+			loadVenueList();
 		} else {
 			console.log("Error adding venue");
 		}
