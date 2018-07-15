@@ -63,7 +63,7 @@ function addVenue(){
 
 	$.post("/addVenue", params, function(result) {
 		if (result) {
-			console.log("Venue added")
+			console.log("Venue added");
 			loadVenueList();
 		} else {
 			console.log("Error adding venue");
@@ -72,7 +72,7 @@ function addVenue(){
 }
 
 function addEvent(){
-	console.log("inside addEvent");
+	login();
 	/*var eventName = $("#eventName").val();
 	var eventDate = $("#eventDate").val();
 	var venueId = $("#venueList").val();
