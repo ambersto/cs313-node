@@ -33,8 +33,9 @@ function login(){
 					}
 				});
 			} else {
+				$("#loginError").text("Login successful");
 				// Debugging statement - display the user's id when they log in
-				$("#loginError").text("User id is: " + JSON.stringify(result[0].id));
+				//$("#loginError").text("User id is: " + JSON.stringify(result[0].id));
 			}
 		} else {
 			$("#loginError").text("Error logging in");
@@ -83,7 +84,7 @@ function addEvent(){
 		venueId: venueId,
 		notes: notes
 	};
-	$("#events").text("addEvent is working");
+	$("#events").text("Adding event now");
 
 	$.post("/addEvent", params, function(result) {
 		if(result) {
