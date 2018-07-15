@@ -72,6 +72,7 @@ function addVenue(){
 }
 
 function addEvent(){
+	console.log("inside addEvent");
 	var eventName = $("#eventName");
 	var eventDate = $("#eventDate");
 	var venueId = $("#venueList");
@@ -84,13 +85,13 @@ function addEvent(){
 		notes: notes
 	};
 
-	$.post("/addEvent", params, function(result) {
+	/*$.post("/addEvent", params, function(result) {
 		if(result) {
 			console.log("Event added");
 		} else {
 			console.log("Error adding event");
 		}
-	});
+	});*/
 }
 
 
