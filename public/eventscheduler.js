@@ -85,13 +85,14 @@ function addEvent(){
 	};
 	$("#events").text("addEvent is working");
 
-	/*$.post("/addEvent", params, function(result) {
+	$.post("/addEvent", params, function(result) {
 		if(result) {
 			console.log("Event added");
 		} else {
 			console.log("Error adding event");
 		}
-	});*/
+	});
+	$("#events").text("database connection is working");
 }
 
 
