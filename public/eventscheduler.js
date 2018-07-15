@@ -75,8 +75,8 @@ function addEvent(){
 	login();
 	var eventName = $("#eventName").val();
 	var eventDate = $("#eventDate").val();
-	/*var venueId = $("#venueList").val();
-	var notes = $("#notes").val();
+	var venueId = $("#venueList").val();
+	/*var notes = $("#notes").val();
 
 	var params = {
 		eventName: eventName,
