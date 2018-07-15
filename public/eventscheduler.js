@@ -74,7 +74,7 @@ function addVenue(){
 function addEvent(){
 	var eventName = $("#eventName");
 	var eventDate = $("#eventDate");
-	var venueId = $("#venueId");
+	var venueId = $("#venueList");
 	var notes = $("#notes");
 
 	var params = {
