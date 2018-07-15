@@ -90,7 +90,7 @@ function addEvent(){
 		} else {
 			console.log("Error adding event");
 		}
-	})
+	});
 }
 
 
