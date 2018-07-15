@@ -60,7 +60,7 @@ function addVenue(){
 		email: email
 	};
 
-	$.get("/addVenue", params, function(result) {
+	$.post("/addVenue", params, function(result) {
 		if (result) {
 			console.log("Venue added")
 			//loadVenueList();
