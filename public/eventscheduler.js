@@ -72,7 +72,6 @@ function addVenue(){
 }
 
 function addEvent(){
-	login();
 	var eventName = $("#eventName").val();
 	var eventDate = $("#eventDate").val();
 	var venueId = $("#venueList").val();
@@ -84,6 +83,7 @@ function addEvent(){
 		venueId: venueId,
 		notes: notes
 	};
+	login();
 
 	/*$.post("/addEvent", params, function(result) {
 		if(result) {
