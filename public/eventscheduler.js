@@ -91,6 +91,7 @@ function login(){
 				toggleLoginBox();
 				toggleEventButton();
 				toggleDisplayButton();
+				toggleDisplayBox();
 
 				// Debugging statement - display the user's id when they log in
 				//$("#loginError").text("User id is: " + JSON.stringify(result[0].id));
@@ -163,6 +164,7 @@ function addEvent(){
 }
 
 function loadEventList() {
+	toggleEventBox();
 	toggleDisplayBox();
 }
 

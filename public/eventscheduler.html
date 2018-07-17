@@ -20,7 +20,7 @@
 		<div id="loginError"></div><br>
 	</div>
 
-	<button onclick="toggleEventBox(); return false;" id="createNewEvent">Create New Event</button>
+	<button onclick="toggleEventBox(); toggleDisplayBox(); return false;" id="createNewEvent">Create New Event</button><br>
 	<div id="addEventBox">
 		<input type="text" id="eventName" placeholder="Name of event"><br>
 		<input type="datetime-local" id="eventDate"><br>
@@ -28,7 +28,7 @@
 		<select id="venueList"></select><br>
 		<button onclick="addEvent(); return false;">Add event</button><br><br>
 
-		<button onclick="toggleVenueBox(); return false;" id="createNewVenue">Create New Venue</button>
+		<button onclick="toggleVenueBox(); return false;" id="createNewVenue">Create New Venue</button><br>
 		<div id="addVenueBox">
 			<input type="text" id="venueName" placeholder="Name of venue"><br>
 			<input type="text" id="street" placeholder="Street address"><br>
@@ -42,7 +42,7 @@
 		</div>
 	</div>
 
-	<button onclick="loadEventList(); return false;" id="displayEvents">Display Events</button>
+	<button onclick="loadEventList(); return false;" id="displayEvents">Display Events</button><br>
 	<div id="displayBox">
 		<ul id="events">
 			<li>Sample event item</li>
