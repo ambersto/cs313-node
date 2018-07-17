@@ -14,6 +14,7 @@ function toggleLoginBox() {
 
 function toggleVenueBox() {
 	$("#addVenueBox").toggle();
+	toggleVenueButton();
 }
 
 function toggleVenueButton() {
