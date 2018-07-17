@@ -172,9 +172,7 @@ function loadEventList() {
 				console.log("Showing events");
 				$("#eventList").empty();
 				for (i in result){
-					var dateString = JSON.stringify(result[i].event_date);
-					var newDate = new Date(dateString);
-					$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + newDate + " - " + JSON.stringify(result[i].event_name) + "</li>");
+					$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + result[i].event_date + " - " + JSON.stringify(result[i].event_name) + "</li>");
 				}
 			} else {
 				console.log("Error loading events");
