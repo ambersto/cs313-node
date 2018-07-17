@@ -162,7 +162,10 @@ function addEvent(){
 	loadEventList();
 }
 
-function loadEventList() {
+/*******************************************
+ * LoadEventList: loads events from database
+ ******************************************/
+ function loadEventList() {
 	if(!$("#addEventBox").is(":hidden")){
 		toggleEventBox();
 	}
@@ -172,9 +175,7 @@ function loadEventList() {
 				console.log("Showing events");
 				$("#eventList").empty();
 				for (i in result){
-					var dateString = result[i].event_date;
-					var dateArray = dateString.split(/[: T . Z -]/);
-					var newDate = new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5], dateArray[6]);
+					var newDate = stringToDate(result[i].event_date);
 					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate + " - " + result[i].event_name + "</li>");
 				}
 			} else {
@@ -183,6 +184,12 @@ function loadEventList() {
 		});
 	}
 	toggleDisplayBox();
+}
+
+function stringToDate(dateString) {
+	var dateArray = dateString.split(/[: T . Z -]/);
+	var newDate = new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5], dateArray[6]);
+	return newDate;
 }
 
 // TODO: fix display of dates
