@@ -1,3 +1,9 @@
+function startUp(){
+	loadVenueList();
+	$("#addEventBox").show();
+	$("#addVenueBox").show();
+}
+
 function loadVenueList(){
 	$("#venueList").empty();
 	$.get("/getVenues", function(result) {
@@ -42,9 +48,9 @@ function login(){
 		}
 	});
 
-	$("#firstname").hide();
-	$("#lastname").hide();
-	$("#loginButton").hide();
+	$("#loginBox").hide();
+	$("#addEventBox").show();
+	$("#addVenueBox").show();
 }
 
 function addVenue(){

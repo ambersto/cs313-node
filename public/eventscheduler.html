@@ -9,31 +9,37 @@
 	</script>
 	<script src="eventscheduler.js"></script>
 </head>
-<body onload="loadVenueList(); return false;">
+<body onload="startUp(); return false;">
 
 <form>
 <div>
-	<input type="text" id="firstname" placeholder="First name"><br>
-	<input type="text" id="lastname" placeholder="Last name"><br>
-	<button onclick="login(); return false;" id="loginButton">Log in</button><br>
-	<div id="loginError"></div><br>
+	<div id="loginBox">
+		<input type="text" id="firstname" placeholder="First name"><br>
+		<input type="text" id="lastname" placeholder="Last name"><br>
+		<button onclick="login(); return false;" id="loginButton">Log in</button><br>
+		<div id="loginError"></div><br>
+	</div>
 
-	<input type="text" id="eventName" placeholder="Name of event"><br>
-	<input type="datetime-local" id="eventDate"><br>
-	<textarea rows="4" cols="50" id="notes" placeholder="Notes"></textarea><br>
-	<select id="venueList"></select><br>
-	<button onclick="addEvent(); return false;">Add event</button><br>
-	<br>
+	<div id="addEventBox">
+		<input type="text" id="eventName" placeholder="Name of event"><br>
+		<input type="datetime-local" id="eventDate"><br>
+		<textarea rows="4" cols="50" id="notes" placeholder="Notes"></textarea><br>
+		<select id="venueList"></select><br>
+		<button onclick="addEvent(); return false;">Add event</button><br>
+		<br>
+	</div>
 	
-	<input type="text" id="venueName" placeholder="Name of venue"><br>
-	<input type="text" id="street" placeholder="Street address"><br>
-	<input type="text" id="city" placeholder="City"><br>
-	<input type="text" id="state" placeholder="State"><br>
-	<input type="number" id="zip" placeholder="Zip code"><br>
-	<input type="text" id="phone" placeholder="Phone number"><br>
-	<input type="text" id="email" placeholder="Email"><br>
-	<button onclick="addVenue(); return false;">Add venue</button><br>
-	<br><br>
+	<div id="addVenueBox">
+		<input type="text" id="venueName" placeholder="Name of venue"><br>
+		<input type="text" id="street" placeholder="Street address"><br>
+		<input type="text" id="city" placeholder="City"><br>
+		<input type="text" id="state" placeholder="State"><br>
+		<input type="number" id="zip" placeholder="Zip code"><br>
+		<input type="text" id="phone" placeholder="Phone number"><br>
+		<input type="text" id="email" placeholder="Email"><br>
+		<button onclick="addVenue(); return false;">Add venue</button><br>
+		<br><br>
+	</div>
 
 	<div id="events"></div>
 </div>
