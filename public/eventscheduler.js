@@ -167,6 +167,18 @@ function loadEventList() {
 		toggleEventBox();
 	}
 	toggleDisplayBox();
+
+	$.get("/getEvents", function(result) {
+		if (result) {
+			console.log("Showing events");
+			$("#eventList").empty();
+			for (i in result){
+				$("#eventList").append("<li value=\"" + JSON.stringify(result[i].id) + "\">" + JSON.stringify(result[i].event_name) + "</li>");
+			}
+		} else {
+			console.log("Error loading events");
+		}
+	});
 }
 
 // TODO: display list of event names and times
