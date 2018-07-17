@@ -174,7 +174,7 @@ function loadEventList() {
 				for (i in result){
 					var dateString = JSON.stringify(result[i].event_date);
 					var dateArray = dateString.split(/[: T . Z -]/);
-					var newDate = new Date(t[0], t[1], t[2], t[3], t[4], t[5], t[6]);
+					var newDate = new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5], dateArray[6]);
 					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate + " - " + result[i].event_name + "</li>");
 				}
 			} else {
