@@ -1,10 +1,18 @@
+/********************************************
+ * StartUp: sets the display on start-up
+ *******************************************/
 function startUp(){
 	loadVenueList();
 	$("#addEventBox").hide();
 	$("#addVenueBox").hide();
 	$("#createNewEvent").hide();
+	$("#displayEvents").hide();
+	$("#displayBox").hide();
 }
 
+/*******************************************
+ * Toggle functions: toggle the displays
+ ******************************************/
 function toggleLoginBox() {
 	$("#loginBox").toggle();	
 }
@@ -27,6 +35,19 @@ function toggleVenueButton() {
 	$("#createNewVenue").toggle();
 }
 
+function toggleDisplayBox() {
+	$("#displayBox").toggle();
+	toggleDisplayButton();
+}
+
+function toggleDisplayButton() {
+	$("#displayEvents").toggle();
+}
+
+/*******************************************
+ * LoadVenueList: loads venues from database
+ * into dropdown menu
+ ******************************************/
 function loadVenueList(){
 	$("#venueList").empty();
 	$.get("/getVenues", function(result) {
@@ -40,6 +61,11 @@ function loadVenueList(){
 	});
 }
 
+/*******************************************
+ * Login: logs the user in (creates new user
+ * if they are not in the database) and 
+ * changes the display
+ ******************************************/
 function login(){
 	var firstname = $("#firstname").val();
 	var lastname = $("#lastname").val();
@@ -55,14 +81,18 @@ function login(){
 			if(JSON.stringify(result) == "[]"){
 				$.post("/addUser", params, function(result) {
 					if(result) {
-						// Once a new user is created, log them out
+						// Once a new user is created, log them in
 						login();
 					} else {
 						$("#loginError").text("Error logging in");
 					}
 				});
 			} else {
-				$("#loginError").text("Login successful");
+				// After login, hide login elements and display options
+				toggleLoginBox();
+				toggleEventButton();
+				toggleDisplayButton();
+
 				// Debugging statement - display the user's id when they log in
 				//$("#loginError").text("User id is: " + JSON.stringify(result[0].id));
 			}
@@ -70,11 +100,11 @@ function login(){
 			$("#loginError").text("Error logging in");
 		}
 	});
-
-	toggleLoginBox();
-	toggleEventButton();
 }
 
+/*******************************************
+ * AddVenue: adds a new venue to the database
+ ******************************************/
 function addVenue(){
 	var venueName = $("#venueName").val();
 	var street = $("#street").val();
@@ -105,6 +135,9 @@ function addVenue(){
 	toggleVenueBox();
 }
 
+/*******************************************
+ * AddEvent: adds a new event to the database
+ ******************************************/
 function addEvent(){
 	var eventName = $("#eventName").val();
 	var eventDate = $("#eventDate").val();
@@ -128,6 +161,11 @@ function addEvent(){
 	});
 	$("#events").text("database connection is working");
 	toggleEventBox();
+}
+
+function loadEventList() {
+	toggleDisplayBox();
+	toggleDisplayButton();
 }
 
 // TODO: display list of event names and times
