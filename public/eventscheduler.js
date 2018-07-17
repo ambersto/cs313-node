@@ -4,6 +4,18 @@ function startUp(){
 	$("#addVenueBox").hide();
 }
 
+function toggleLoginBox() {
+	$("#loginBox").toggle();	
+}
+
+function toggleVenueBox() {
+	$("#addVenueBox").toggle();
+}
+
+function toggleEventBox() {
+	$("#addEventBox").toggle();
+}
+
 function loadVenueList(){
 	$("#venueList").empty();
 	$.get("/getVenues", function(result) {
@@ -48,9 +60,8 @@ function login(){
 		}
 	});
 
-	$("#loginBox").hide();
-	$("#addEventBox").show();
-	$("#addVenueBox").show();
+	toggleLoginBox();
+	toggleEventBox();
 }
 
 function addVenue(){

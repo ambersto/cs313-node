@@ -27,18 +27,19 @@
 		<select id="venueList"></select><br>
 		<button onclick="addEvent(); return false;">Add event</button><br>
 		<br>
-	</div>
-	
-	<div id="addVenueBox">
-		<input type="text" id="venueName" placeholder="Name of venue"><br>
-		<input type="text" id="street" placeholder="Street address"><br>
-		<input type="text" id="city" placeholder="City"><br>
-		<input type="text" id="state" placeholder="State"><br>
-		<input type="number" id="zip" placeholder="Zip code"><br>
-		<input type="text" id="phone" placeholder="Phone number"><br>
-		<input type="text" id="email" placeholder="Email"><br>
-		<button onclick="addVenue(); return false;">Add venue</button><br>
-		<br><br>
+
+		<button onclick="toggleVenueBox(); return false;"></button>
+		<div id="addVenueBox">
+			<input type="text" id="venueName" placeholder="Name of venue"><br>
+			<input type="text" id="street" placeholder="Street address"><br>
+			<input type="text" id="city" placeholder="City"><br>
+			<input type="text" id="state" placeholder="State"><br>
+			<input type="number" id="zip" placeholder="Zip code"><br>
+			<input type="text" id="phone" placeholder="Phone number"><br>
+			<input type="text" id="email" placeholder="Email"><br>
+			<button onclick="addVenue(); return false;">Add venue</button><br>
+			<br><br>
+		</div>
 	</div>
 
 	<div id="events"></div>
