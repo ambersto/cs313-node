@@ -4,12 +4,17 @@ function startUp(){
 	$("#addVenueBox").hide();
 }
 
-function toggleEventBox() {
-	$("#addEventBox").toggle();
-}
-
 function toggleLoginBox() {
 	$("#loginBox").toggle();	
+}
+
+function toggleEventBox() {
+	$("#addEventBox").toggle();
+	toggleEventButton();
+}
+
+function toggleEventButton() {
+	$("#createNewEvent").toggle();
 }
 
 function toggleVenueBox() {
@@ -66,7 +71,7 @@ function login(){
 	});
 
 	toggleLoginBox();
-	toggleEventBox();
+	toggleEventButton();
 }
 
 function addVenue(){
