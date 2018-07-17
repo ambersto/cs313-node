@@ -167,20 +167,19 @@ function loadEventList() {
 		toggleEventBox();
 	}
 	if($("#displayBox").is(":hidden")){
-		toggleDisplayBox();
-	}
-
-	$.get("/getEvents", function(result) {
-		if (result) {
-			console.log("Showing events");
-			$("#eventList").empty();
-			for (i in result){
-				$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + JSON.stringify(result[i].event_name) + "</li>");
+		$.get("/getEvents", function(result) {
+			if (result) {
+				console.log("Showing events");
+				$("#eventList").empty();
+				for (i in result){
+					$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + JSON.stringify(result[i].event_name) + "</li>");
+				}
+			} else {
+				console.log("Error loading events");
 			}
-		} else {
-			console.log("Error loading events");
-		}
-	});
+		});
+	}
+	toggleDisplayBox();
 }
 
 // TODO: display list of event names and times
