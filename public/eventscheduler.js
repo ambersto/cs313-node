@@ -176,7 +176,7 @@ function addEvent(){
 				$("#eventList").empty();
 				for (i in result){
 					var newDate = stringToDate(result[i].event_date);
-					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate + " - " + result[i].event_name + "</li>");
+					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate.getHours() + ":" + newDate.getMinutes() + " - " + result[i].event_name + "</li>");
 				}
 			} else {
 				console.log("Error loading events");
@@ -186,13 +186,15 @@ function addEvent(){
 	toggleDisplayBox();
 }
 
+/*******************************************
+ * StringToDate: converts sql timestamp to js date
+ ******************************************/
 function stringToDate(dateString) {
 	var dateArray = dateString.split(/[: T . Z -]/);
 	var newDate = new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5], dateArray[6]);
 	return newDate;
 }
 
-// TODO: fix display of dates
 // TODO: query event list based on given date
 // TODO: show details of event when clicked/hover?
 // TODO: allow editing of event when clicked
@@ -208,3 +210,4 @@ function stringToDate(dateString) {
 //       https://stackoverflow.com/questions/8418811/is-there-a-way-to-use-javascript-to-populate-a-html-dropdown-menu-with-values
 //		 https://stackoverflow.com/questions/10578619/jquery-dynamically-create-select-tag/10579053
 // TODO: display list of event names and times
+// TODO: fix display of dates
