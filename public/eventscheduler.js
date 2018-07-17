@@ -163,6 +163,9 @@ function addEvent(){
 }
 
 function loadEventList() {
+	if(!$("#addEventBox").is(":hidden")){
+		toggleEventBox();
+	}
 	toggleDisplayBox();
 }
 
