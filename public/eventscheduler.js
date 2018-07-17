@@ -172,7 +172,9 @@ function loadEventList() {
 				console.log("Showing events");
 				$("#eventList").empty();
 				for (i in result){
-					$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + JSON.stringify(result[i].event_date) + " - " + JSON.stringify(result[i].event_name) + "</li>");
+					var dateString = JSON.stringify(result[i].event_date);
+					var newDate = new Date(dateString);
+					$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + newDate + " - " + JSON.stringify(result[i].event_name) + "</li>");
 				}
 			} else {
 				console.log("Error loading events");
@@ -182,7 +184,7 @@ function loadEventList() {
 	toggleDisplayBox();
 }
 
-// TODO: display list of event names and times
+// TODO: fix display of dates
 // TODO: query event list based on given date
 // TODO: show details of event when clicked/hover?
 // TODO: allow editing of event when clicked
@@ -197,3 +199,4 @@ function loadEventList() {
 //       https://www.w3schools.com/tags/tag_select.asp
 //       https://stackoverflow.com/questions/8418811/is-there-a-way-to-use-javascript-to-populate-a-html-dropdown-menu-with-values
 //		 https://stackoverflow.com/questions/10578619/jquery-dynamically-create-select-tag/10579053
+// TODO: display list of event names and times
