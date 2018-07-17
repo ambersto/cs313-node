@@ -172,8 +172,10 @@ function loadEventList() {
 				console.log("Showing events");
 				$("#eventList").empty();
 				for (i in result){
-					var dateCopy = result[i].event_date;
-					$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + result[i].event_date + " - " + result[i].event_name + "</li>");
+					var dateString = JSON.stringify(result[i].event_date);
+					var dateArray = dateString.split(/[: T . -]/);
+					var newDate = new Date(Date.UTC(t[0], t[1], t[2], t[3], t[4], t[5]))
+					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate + " - " + result[i].event_name + "</li>");
 				}
 			} else {
 				console.log("Error loading events");
