@@ -173,7 +173,7 @@ function loadEventList() {
 				$("#eventList").empty();
 				for (i in result){
 					var dateCopy = result[i].event_date;
-					$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + result[i].event_date + " - " + JSON.stringify(result[i].event_name) + "</li>");
+					$("#eventList").append("<li name=\"" + JSON.stringify(result[i].id) + "\">" + result[i].event_date + " - " + result[i].event_name + "</li>");
 				}
 			} else {
 				console.log("Error loading events");
