@@ -325,7 +325,7 @@ function addEventToDB(eventName, eventDate, venueId, authorId, notes, callback) 
 // get list of all events
 function getEventsFromDB(callback) {
 	console.log("Getting events from DB");
-	var sql = "SELECT e.id, e.event_name AS event_name, e.event_date, v.venue_name, a.first_name, e.notes FROM event e INNER JOIN venue v ON e.venue_id=v.id INNER JOIN author a ON e.author_id=a.id";
+	var sql = "SELECT e.id, e.event_name AS event_name, e.event_date AS event_date, v.venue_name, a.first_name, e.notes FROM event e INNER JOIN venue v ON e.venue_id=v.id INNER JOIN author a ON e.author_id=a.id";
 	pool.query(sql, function(err, result) {
 	if (err) {
 		console.log("Error in query: ");
