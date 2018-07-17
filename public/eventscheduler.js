@@ -41,6 +41,10 @@ function login(){
 			$("#loginError").text("Error logging in");
 		}
 	});
+
+	$("#firstname").hide();
+	$("#lastname").hide();
+	$("#loginButton").hide();
 }
 
 function addVenue(){
