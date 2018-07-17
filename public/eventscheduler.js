@@ -159,14 +159,16 @@ function addEvent(){
 		}
 	});
 	$("#events").text("database connection is working");
-	toggleEventBox();
+	loadEventList();
 }
 
 function loadEventList() {
 	if(!$("#addEventBox").is(":hidden")){
 		toggleEventBox();
 	}
-	toggleDisplayBox();
+	if($("#displayBox").is(":hidden")){
+		toggleDisplayBox();
+	}
 
 	$.get("/getEvents", function(result) {
 		if (result) {
