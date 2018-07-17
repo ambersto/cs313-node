@@ -4,6 +4,10 @@ function startUp(){
 	$("#addVenueBox").hide();
 }
 
+function toggleEventBox() {
+	$("#addEventBox").toggle();
+}
+
 function toggleLoginBox() {
 	$("#loginBox").toggle();	
 }
@@ -12,8 +16,8 @@ function toggleVenueBox() {
 	$("#addVenueBox").toggle();
 }
 
-function toggleEventBox() {
-	$("#addEventBox").toggle();
+function toggleVenueButton() {
+	$("#createNewVenue").toggle();
 }
 
 function loadVenueList(){
@@ -91,6 +95,7 @@ function addVenue(){
 			console.log("Error adding venue");
 		}
 	});
+	toggleVenueBox();
 }
 
 function addEvent(){
