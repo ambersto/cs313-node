@@ -37,7 +37,6 @@ function toggleVenueButton() {
 
 function toggleDisplayBox() {
 	$("#displayBox").toggle();
-	toggleDisplayButton();
 }
 
 function toggleDisplayButton() {
@@ -165,7 +164,6 @@ function addEvent(){
 
 function loadEventList() {
 	toggleDisplayBox();
-	toggleDisplayButton();
 }
 
 // TODO: display list of event names and times
