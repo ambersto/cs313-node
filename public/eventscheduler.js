@@ -1,7 +1,7 @@
 function startUp(){
 	loadVenueList();
-	$("#addEventBox").show();
-	$("#addVenueBox").show();
+	$("#addEventBox").hide();
+	$("#addVenueBox").hide();
 }
 
 function loadVenueList(){
