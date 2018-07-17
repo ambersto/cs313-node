@@ -173,8 +173,8 @@ function loadEventList() {
 				$("#eventList").empty();
 				for (i in result){
 					var dateString = JSON.stringify(result[i].event_date);
-					var dateArray = dateString.split(/[: T . -]/);
-					var newDate = new Date(Date.UTC(t[0], t[1], t[2], t[3], t[4], t[5]));
+					var dateArray = dateString.split(/[: T . Z -]/);
+					var newDate = new Date(t[0], t[1], t[2], t[3], t[4], t[5], t[6]);
 					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate + " - " + result[i].event_name + "</li>");
 				}
 			} else {
