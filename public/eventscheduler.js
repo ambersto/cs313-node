@@ -37,7 +37,6 @@ function toggleVenueButton() {
 
 function toggleDisplayBox() {
 	$("#displayBox").toggle();
-	toggleDisplayButton();
 }
 
 function toggleDisplayButton() {
@@ -91,10 +90,8 @@ function login(){
 				// After login, hide login elements and display options
 				toggleLoginBox(); // Hide login box
 				toggleEventButton(); // Show event button
-				toggleEventBox(); //Show event box/hide button
 				toggleDisplayButton(); // Show display button
-				toggleDisplayBox(); // Show display box/hide button/hide eventBox
-
+				
 				// Debugging statement - display the user's id when they log in
 				//$("#loginError").text("User id is: " + JSON.stringify(result[0].id));
 			}
@@ -166,7 +163,6 @@ function addEvent(){
 }
 
 function loadEventList() {
-	toggleEventBox();
 	toggleDisplayBox();
 }
 
