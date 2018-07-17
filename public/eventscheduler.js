@@ -126,8 +126,14 @@ function addEvent(){
 		}
 	});
 	$("#events").text("database connection is working");
+	toggleEventBox();
 }
 
+// TODO: display list of event names and times
+// TODO: query event list based on given date
+// TODO: show details of event when clicked/hover?
+// TODO: allow editing of event when clicked
+// ?? TODO: allow deleting of event
 
 /*******************************************
  * Completed tasks
