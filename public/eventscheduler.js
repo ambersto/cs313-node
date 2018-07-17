@@ -175,7 +175,7 @@ function loadEventList() {
 					var dateString = JSON.stringify(result[i].event_date);
 					var dateArray = dateString.split(/[: T . Z -]/);
 					var newDate = new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5], dateArray[6]);
-					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate + " - " + result[i].event_name + "</li>");
+					$("#eventList").append("<li name=\"" + result[i].id + "\">" + dateArray[0] + dateArray[1] + " - " + result[i].event_name + "</li>");
 				}
 			} else {
 				console.log("Error loading events");
