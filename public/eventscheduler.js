@@ -2,6 +2,7 @@ function startUp(){
 	loadVenueList();
 	$("#addEventBox").hide();
 	$("#addVenueBox").hide();
+	$("#createNewEvent").hide();
 }
 
 function toggleLoginBox() {
