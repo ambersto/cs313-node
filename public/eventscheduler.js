@@ -91,9 +91,6 @@ function login(){
 				toggleLoginBox(); // Hide login box
 				toggleEventButton(); // Show event button
 				toggleDisplayButton(); // Show display button
-				
-				// Debugging statement - display the user's id when they log in
-				//$("#loginError").text("User id is: " + JSON.stringify(result[0].id));
 			}
 		} else {
 			$("#loginError").text("Error logging in");
@@ -166,6 +163,8 @@ function addEvent(){
  * LoadEventList: loads events from database
  ******************************************/
  function loadEventList() {
+ 	var selectedDate = $("#selectedDate").val();
+
 	if(!$("#addEventBox").is(":hidden")){
 		toggleEventBox();
 	}
@@ -178,7 +177,11 @@ function addEvent(){
 				
 				for (i in result){
 					var newDate = stringToDate(result[i].event_date);
-					$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
+					if(newDate.getFullYear() == selectedDate.getFullYear() 
+						&& newDate.getMonth() == selectedDate.getMonth() 
+						&& newDate.getDate() == selectedDate.getDate()) {
+						$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
+					}
 				}
 
 			} else {
@@ -229,6 +232,7 @@ function getHoursAndMinutes(longDate) {
 // TODO: show details of event when clicked/hover?
 // TODO: allow editing of event when clicked
 // ?? TODO: allow deleting of event
+// TODO: add style
 
 /*******************************************
  * Completed tasks
@@ -241,3 +245,4 @@ function getHoursAndMinutes(longDate) {
 //		 https://stackoverflow.com/questions/10578619/jquery-dynamically-create-select-tag/10579053
 // TODO: display list of event names and times
 // TODO: fix display of dates
+// TODO: sort dates in ascending order
