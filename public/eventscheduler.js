@@ -184,7 +184,7 @@ function showEvents() {
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
 					$("#eventList").append("<li value=\"" + result[i].id + "\""
-						+ "onclick=\"loadEventDetails(" + result[i].id + "); return false;\">" 
+						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
 						+ "</li>");
 				}
