@@ -170,13 +170,22 @@ function addEvent(){
 		toggleEventBox();
 	}
 	if($("#displayBox").is(":hidden")){
-		$.get("/getEvents", function(result) {
-			if (result) {
+		
+		$.get("/getEvents", function(result) {	
+			if (result) {	
 				console.log("Showing events");
 				$("#eventList").empty();
+				
 				for (i in result){
 					var newDate = stringToDate(result[i].event_date);
-					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate.getHours() + ":" + newDate.getMinutes() + " - " + result[i].event_name + "</li>");
+
+					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate.getHours() + ":");
+					if(newDate.getMinutes() > 10){
+						$("#eventList").append("0" + newDate.getMinutes() + " - " + result[i].event_name + "</li>");
+					}
+					else{
+						$("#eventList").append(newDate.getMinutes() + " - " + result[i].event_name + "</li>");	
+					}
 				}
 			} else {
 				console.log("Error loading events");
