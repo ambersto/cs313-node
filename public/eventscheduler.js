@@ -183,10 +183,10 @@ function showEvents() {
 				if(newDate.getFullYear() == selectedDate.getFullYear()
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
-					$("#eventList").append("<li id=\"event" + result[i].id + "\""
+					$("#eventList").append("<li "
 						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
-						+ "</li>");
+						+ "</li><p id=\"event" + result[i].id + "\"></p>");
 				}
 			}
 		} else {
@@ -257,7 +257,6 @@ function loadEventDetails(eventId){
 				+ " " + result[0].zip + "<br>"
 				+ "Phone: " + result[0].phone + "<br>"
 				+ "Email: " + result[0].email + "<br>");
-			venueId = result[0].venue_id;
 		} else {
 			$("#eventList").append("Error in venue details");
 		}
