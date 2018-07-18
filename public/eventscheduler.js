@@ -175,16 +175,13 @@ function showEvents() {
  function loadEventList() {
  	var selectedDate = new Date($("#selectedDate").val());
  	$.get("/getEvents", function(result) {
-		if (result) {	
+		if (result) {
 			console.log("Showing events");
 			$("#eventList").empty();
+			$("#eventList").append(selectedDate.getFullYear() + selectedDate.getMonth() + selectedDate.getDate());
 			for (i in result){
 				var newDate = stringToDate(result[i].event_date);
-				if(newDate.getFullYear() == selectedDate.getFullYear()
-					&& newDate.getMonth() == selectedDate.getMonth()
-					&& newDate.getDate() == selectedDate.getDate()){
-					$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
-				}
+				$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
 			}
 		} else {
 			console.log("Error loading events");
