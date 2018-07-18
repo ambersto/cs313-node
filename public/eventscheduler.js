@@ -161,7 +161,7 @@ function addEvent(){
 		}
 	});
 	$("#events").text("database connection is working");
-	loadEventList();
+	loadEventList("#eventList");
 }
 
 /*******************************************
@@ -177,22 +177,22 @@ function showEvents() {
 /*******************************************
  * LoadEventList: loads events from database
  ******************************************/
- function loadEventList() {
+ function loadEventList(listName) {
  	var selectedDate = new Date($("#selectedDate").val());
  	$.get("/getEvents", function(result) {
 		if (result) {
 			console.log("Showing events");
-			$("#eventList").empty();
+			$(listName).empty();
 			for (i in result){
 				var newDate = stringToDate(result[i].event_date);
 				if(newDate.getFullYear() == selectedDate.getFullYear()
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
-					$("#eventList").append("<li "
+					$(listName).append("<li "
 						+ "onmouseover=\"toggleEventDetails(" + result[i].id + "); return false;\""
 						+ "onmouseout=\"toggleEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
-						+ "<button id=\"button" + result[i].id + "\">Edit Event</button>"
+						+ "   <button id=\"button" + result[i].id + "\">Edit Event</button>"
 						+ "</li><p id=\"event" + result[i].id + "\"></p>");
 					loadEventDetails(result[i].id);
 					toggleEventDetails(result[i].id);
@@ -240,6 +240,10 @@ function getHoursAndMinutes(longDate) {
 	return timeString;
 }
 
+/*******************************************
+ * LoadEventDetails: loads the details for a
+ * specific event
+ ******************************************/
 function loadEventDetails(eventId){
 	var eventParams = { eventId: eventId };
 	var elementId = "event" + eventId;
@@ -271,15 +275,50 @@ function loadEventDetails(eventId){
 	});
 }
 
+/*******************************************
+ * EmptyEventDetails: removes the details
+ * from an event
+ ******************************************/
 function emptyEventDetails(eventId) {
 	var elementId = "event" + eventId;
 	$(document.getElementById(elementId)).empty();
 }
 
-// TODO: show details of event when clicked/hover?
+/*******************************************
+ * CreateEditEvent: creates input fields to
+ * edit a specified event
+ ******************************************/
+function createEditEvent(eventId) {
+	$("#eventList").empty();
+
+	var eventParams = { eventId: eventId };
+	$.get("/getEventDetails", eventParams, function(result) {
+		if (result) {
+			var tempDate = stringToDate(result[0].event_date);
+			$("#editEventBox").append("<input type=\"text\" id=\"editEventName\""
+				+ "value=\"" + result[0].event_name + "\"><br>");
+			$("#editEventBox").append("<input type=\"datetime-local\" id=\"editEventDate\""
+				+ "value=\"" + tempDate + "\><br>");
+			$("#editEventBox").append("<textarea rows=\"4\" cols=\"50\" id=\"editNotes\">"
+				+ result[0].notes + "</textarea><br>");
+			$("#editEventBox").append("<select id=\"editVenueList\"></select><br>");
+			loadEventList("#editVenueList");
+			$("#editEventBox").append("<button>Save changes</button>")
+		} else {
+			$("#eventList").append("Error in edit event");
+		}
+	});
+}
+
+// Edit inline? or remove list and display edit?
+// Allow user to select which portion of the event
+//   they would like to edit (Name, date, notes, venue)?
+// Or prefill the inputs with default values and update
+//   all fields?
+
 // TODO: allow editing of event when clicked
-// ?? TODO: allow deleting of event
 // TODO: add style
+// ?? TODO: allow deleting of event
 
 /*******************************************
  * Completed tasks
@@ -294,3 +333,4 @@ function emptyEventDetails(eventId) {
 // TODO: fix display of dates
 // TODO: sort dates in ascending order
 // TODO: query event list based on given date
+// TODO: show details of event when clicked/hover?
