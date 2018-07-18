@@ -2,7 +2,7 @@
  * StartUp: sets the display on start-up
  *******************************************/
 function startUp(){
-	loadVenueList();
+	loadVenueList("#venueList");
 	$("#addEventBox").hide();
 	$("#addVenueBox").hide();
 	$("#createNewEvent").hide();
@@ -52,15 +52,15 @@ function toggleEventDetails(eventId){
  * LoadVenueList: loads venues from database
  * into dropdown menu
  ******************************************/
-function loadVenueList(){
-	$("#venueList").empty();
+function loadVenueList(listName){
+	$(listName).empty();
 	$.get("/getVenues", function(result) {
 		if (result) {
 			for (i in result){
-				$("#venueList").append("<option value=\"" + JSON.stringify(result[i].id) + "\">" + JSON.stringify(result[i].venue_name) + "</option>");
+				$(listName).append("<option value=\"" + JSON.stringify(result[i].id) + "\">" + JSON.stringify(result[i].venue_name) + "</option>");
 			}
 		} else {
-			$("#venueList").append("<option>No venues available</option>")
+			$(listName).append("<option>No venues available</option>")
 		}
 	});
 }
@@ -128,7 +128,7 @@ function addVenue(){
 	$.post("/addVenue", params, function(result) {
 		if (result) {
 			console.log("Venue added");
-			loadVenueList();
+			loadVenueList("#venueList");
 		} else {
 			console.log("Error adding venue");
 		}
@@ -161,7 +161,7 @@ function addEvent(){
 		}
 	});
 	$("#events").text("database connection is working");
-	loadEventList("#eventList");
+	loadEventList();
 }
 
 /*******************************************
@@ -177,18 +177,18 @@ function showEvents() {
 /*******************************************
  * LoadEventList: loads events from database
  ******************************************/
- function loadEventList(listName) {
+ function loadEventList() {
  	var selectedDate = new Date($("#selectedDate").val());
  	$.get("/getEvents", function(result) {
 		if (result) {
 			console.log("Showing events");
-			$(listName).empty();
+			$("#eventList").empty();
 			for (i in result){
 				var newDate = stringToDate(result[i].event_date);
 				if(newDate.getFullYear() == selectedDate.getFullYear()
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
-					$(listName).append("<li "
+					$("#eventList").append("<li "
 						+ "onmouseover=\"toggleEventDetails(" + result[i].id + "); return false;\""
 						+ "onmouseout=\"toggleEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
@@ -302,7 +302,7 @@ function createEditEvent(eventId) {
 			$("#editEventBox").append("<textarea rows=\"4\" cols=\"50\" id=\"editNotes\">"
 				+ result[0].notes + "</textarea><br>");
 			$("#editEventBox").append("<select id=\"editVenueList\"></select><br>");
-			loadEventList("#editVenueList");
+			loadVenueList("#editVenueList");
 			$("#editEventBox").append("<button>Save changes</button>")
 		} else {
 			$("#eventList").append("Error in edit event");
