@@ -183,7 +183,7 @@ function showEvents() {
 				if(newDate.getFullYear() == selectedDate.getFullYear()
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
-					$("#eventList").append("<li value=\"" + result[i].id + "\""
+					$("#eventList").append("<li value=\"event" + result[i].id + "\""
 						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
 						+ "</li>");
@@ -233,10 +233,10 @@ function getHoursAndMinutes(longDate) {
 
 function loadEventDetails(eventId){
 	var params = { eventId: eventId };
-	var elementId = "#" + eventId;
+	var elementId = "event" + eventId;
 	$.get("/getEventDetails", params, function(result) {
 		if (result) {
-			$(document.getElementById(eventId)).append("Added by: " 
+			$(document.getElementById(elementId)).append("Added by: " 
 				+ result[0].first_name + " " + result[0].last_name + "<br>"
 				+ "Notes: " + result[0].notes + "<br>");
 		} else {
