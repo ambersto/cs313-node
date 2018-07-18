@@ -170,23 +170,17 @@ function addEvent(){
 		toggleEventBox();
 	}
 	if($("#displayBox").is(":hidden")){
-		
-		$.get("/getEvents", function(result) {	
+		$.get("/getEvents", function(result) {
+			
 			if (result) {	
 				console.log("Showing events");
 				$("#eventList").empty();
 				
 				for (i in result){
 					var newDate = stringToDate(result[i].event_date);
-
-					$("#eventList").append("<li name=\"" + result[i].id + "\">" + newDate.getHours() + ":");
-					if(newDate.getMinutes() > 10){
-						$("#eventList").append("0" + newDate.getMinutes() + " - " + result[i].event_name + "</li>");
-					}
-					else{
-						$("#eventList").append(newDate.getMinutes() + " - " + result[i].event_name + "</li>");	
-					}
+					$("#eventList").append("<li name=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
 				}
+
 			} else {
 				console.log("Error loading events");
 			}
@@ -202,6 +196,20 @@ function stringToDate(dateString) {
 	var dateArray = dateString.split(/[: T . Z -]/);
 	var newDate = new Date(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4], dateArray[5], dateArray[6]);
 	return newDate;
+}
+
+/*******************************************
+ * GetHoursAndMinutes: extracts and formats
+ * hours and minutes from date
+ ******************************************/
+function getHoursAndMinutes(longDate) {
+	var timeString = "" + longDate.getHours() + ":";
+	if(longDate.getMinutes() < 10){
+		timeString.append("0" + longDate.getMinutes());
+	} else {
+		timeString.append(longDate.getMinutes());
+	}
+	return timeString;
 }
 
 // TODO: query event list based on given date
