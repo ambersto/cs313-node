@@ -181,8 +181,11 @@ function showEvents() {
 			$("#eventList").append(selectedDate.getFullYear() + " " + selectedDate.getMonth() + " " + selectedDate.getDate());
 			for (i in result){
 				var newDate = stringToDate(result[i].event_date);
-				$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name);
-				$("#eventList").append(newDate.getFullYear() + " " + newDate.getMonth() + " " + newDate.getDate() + "</li>");
+				if(newDate.getFullYear() == selectedDate.getFullYear()
+					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
+					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
+					$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
+				}
 			}
 		} else {
 			console.log("Error loading events");
