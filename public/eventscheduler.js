@@ -173,7 +173,7 @@ function showEvents() {
  * LoadEventList: loads events from database
  ******************************************/
  function loadEventList() {
- 	var selectedDate = $("#selectedDate").val();
+ 	var selectedDate = new Date($("#selectedDate").val());
  	$.get("/getEvents", function(result) {	
 		if (result) {	
 			console.log("Showing events");
