@@ -183,7 +183,7 @@ function showEvents() {
 				if(newDate.getFullYear() == selectedDate.getFullYear()
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
-					$("#eventList").append("<li value=\"event" + result[i].id + "\""
+					$("#eventList").append("<li id=\"event" + result[i].id + "\""
 						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
 						+ "</li>");
