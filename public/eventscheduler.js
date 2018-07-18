@@ -181,9 +181,7 @@ function showEvents() {
 			
 			for (i in result){
 				var newDate = stringToDate(result[i].event_date);
-				if(newDate.getFullYear() == selectedDate.getFullYear() 
-					&& newDate.getMonth() == selectedDate.getMonth() 
-					&& newDate.getDate() == selectedDate.getDate()) {
+				if(newDate.getFullYear() == selectedDate.getFullYear()) {
 					$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
 				}
 			}
