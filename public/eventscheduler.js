@@ -192,7 +192,8 @@ function showEvents() {
 						+ "onmouseover=\"toggleEventDetails(" + result[i].id + "); return false;\""
 						+ "onmouseout=\"toggleEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
-						+ "   <button id=\"button" + result[i].id + "\">Edit Event</button>"
+						+ "   <button id=\"button" + result[i].id + "\" "
+						+ "onclick=\"createEditEvent(" + result[i].id + "); return false;\">Edit Event</button>"
 						+ "</li><p id=\"event" + result[i].id + "\"></p>");
 					loadEventDetails(result[i].id);
 					toggleEventDetails(result[i].id);
