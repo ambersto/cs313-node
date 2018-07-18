@@ -43,6 +43,11 @@ function toggleDisplayButton() {
 	$("#displayEvents").toggle();
 }
 
+function toggleEventDetails(eventId){
+	var elementId = "event" + eventId;
+	$(document.getElementById(elementId)).toggle();
+}
+
 /*******************************************
  * LoadVenueList: loads venues from database
  * into dropdown menu
@@ -184,10 +189,12 @@ function showEvents() {
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
 					$("#eventList").append("<li "
-						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\""
-						+ "onmouseout=\"emptyEventDetails(" + result[i].id + "); return false;\">" 
+						+ "onmouseover=\"toggleEventDetails(" + result[i].id + "); return false;\""
+						+ "onmouseout=\"toggleEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
 						+ "</li><p id=\"event" + result[i].id + "\"></p>");
+					loadEventDetails(result[i].id);
+					toggleEventDetails(result[i].id);
 				}
 			}
 		} else {
