@@ -185,7 +185,7 @@ function showEvents() {
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
 					$("#eventList").append("<li "
 						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\""
-						+ "onmouseout=\"emptyEventDetails(" + result[i].id + ")\">" 
+						+ "onmouseout=\"emptyEventDetails(" + result[i].id + "); return false;\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
 						+ "</li><p id=\"event" + result[i].id + "\"></p>");
 				}
