@@ -160,36 +160,37 @@ function addEvent(){
 }
 
 /*******************************************
+ * ShowEvents: displays the event section
+ ******************************************/
+function showEvents() {
+	if(!$("#addEventBox").is(":hidden")){
+		toggleEventBox();
+	}
+	toggleDisplayBox();
+}
+
+/*******************************************
  * LoadEventList: loads events from database
  ******************************************/
  function loadEventList() {
  	var selectedDate = $("#selectedDate").val();
-
-	if(!$("#addEventBox").is(":hidden")){
-		toggleEventBox();
-	}
-	if($("#displayBox").is(":hidden")){
-		$.get("/getEvents", function(result) {
+	$.get("/getEvents", function(result) {	
+		if (result) {	
+			console.log("Showing events");
+			$("#eventList").empty();
 			
-			if (result) {	
-				console.log("Showing events");
-				$("#eventList").empty();
-				
-				for (i in result){
-					var newDate = stringToDate(result[i].event_date);
-					if(newDate.getFullYear() == selectedDate.getFullYear() 
-						&& newDate.getMonth() == selectedDate.getMonth() 
-						&& newDate.getDate() == selectedDate.getDate()) {
-						$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
-					}
+			for (i in result){
+				var newDate = stringToDate(result[i].event_date);
+				if(newDate.getFullYear() == selectedDate.getFullYear() 
+					&& newDate.getMonth() == selectedDate.getMonth() 
+					&& newDate.getDate() == selectedDate.getDate()) {
+					$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
 				}
-
-			} else {
-				console.log("Error loading events");
 			}
-		});
-	}
-	toggleDisplayBox();
+		} else {
+			console.log("Error loading events");
+		}
+	});
 }
 
 /*******************************************
