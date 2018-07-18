@@ -184,7 +184,8 @@ function showEvents() {
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
 					$("#eventList").append("<li "
-						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\">" 
+						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\""
+						+ "onmouseout=\"emptyEventDetails(" + result[i].id + ")\">" 
 						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
 						+ "</li><p id=\"event" + result[i].id + "\"></p>");
 				}
@@ -260,6 +261,10 @@ function loadEventDetails(eventId){
 			$("#eventList").append("Error in event details");
 		}
 	});
+}
+
+function emptyEventDetails(eventId) {
+	$(document.getElementById(elementId)).empty();
 }
 
 // TODO: show details of event when clicked/hover?
