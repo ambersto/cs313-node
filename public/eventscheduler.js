@@ -236,7 +236,7 @@ function loadEventDetails(eventId){
 	var elementId = "#" + eventId;
 	$.get("/getEventDetails", params, function(result) {
 		if (result) {
-			$("#eventList").append("Added by: " 
+			$(document.getElementById(eventId)).append("Added by: " 
 				+ result[0].first_name + " " + result[0].last_name + "<br>"
 				+ "Notes: " + result[0].notes + "<br>");
 		} else {
