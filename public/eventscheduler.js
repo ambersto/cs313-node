@@ -248,7 +248,7 @@ function loadEventDetails(eventId){
 	});
 
 	var venueParams = { venueId: venueId };
-	$.get("/getEventDetails", eventParams, function(result) {
+	$.get("/getVenueDetails", venueParams, function(result) {
 		if (result) {
 			$(document.getElementById(elementId)).append("Location: <br>" 
 				+ result[0].venue_name + "<br>"
