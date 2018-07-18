@@ -178,13 +178,15 @@ function showEvents() {
 		if (result) {
 			console.log("Showing events");
 			$("#eventList").empty();
-			$("#eventList").append(selectedDate.getFullYear() + " " + selectedDate.getMonth() + " " + selectedDate.getDate());
 			for (i in result){
 				var newDate = stringToDate(result[i].event_date);
 				if(newDate.getFullYear() == selectedDate.getFullYear()
 					&& newDate.getMonth() == (selectedDate.getMonth() + 1)
 					&& newDate.getDate() == (selectedDate.getDate() + 1)) {
-					$("#eventList").append("<li value=\"" + result[i].id + "\">" + getHoursAndMinutes(newDate) + " - " + result[i].event_name + "</li>");
+					$("#eventList").append("<li value=\"" + result[i].id + "\""
+						+ "onmouseover=\"loadEventDetails(" + result[i].id + "); return false;\">" 
+						+ getHoursAndMinutes(newDate) + " - " + result[i].event_name 
+						+ "</li>");
 				}
 			}
 		} else {
@@ -229,7 +231,20 @@ function getHoursAndMinutes(longDate) {
 	return timeString;
 }
 
-// TODO: query event list based on given date
+function loadEventDetails(eventId){
+	var params = { eventId: eventId };
+	var elementId = "#" + eventId;
+	$.get("/getEventDetails", params, function(result) {
+		if (result) {
+			$(elementId).append("Added by: " 
+				+ result[0].first_name + " " + result[0].last_name + "<br>"
+				+ "Notes: " + result[0].notes);
+		} else {
+			$("#eventList").append("Error in event details");
+		}
+	});
+}
+
 // TODO: show details of event when clicked/hover?
 // TODO: allow editing of event when clicked
 // ?? TODO: allow deleting of event
@@ -247,3 +262,4 @@ function getHoursAndMinutes(longDate) {
 // TODO: display list of event names and times
 // TODO: fix display of dates
 // TODO: sort dates in ascending order
+// TODO: query event list based on given date

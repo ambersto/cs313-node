@@ -167,7 +167,7 @@ function getDay(request, response) {
 function getEventDetails(request, response) {
 	var eventId = request.query.eventId;
 	console.log("Retrieving details for event");
-	getEventDetails(eventId, function (error, result) {
+	getEventDetailsFromDB(eventId, function (error, result) {
 	if(error || result == null) {
 		response.status(500).json({success: false, data: error});
 	} else {
@@ -180,7 +180,7 @@ function getEventDetails(request, response) {
 function getVenueDetails(request, response) {
 	var venueId = request.query.venueId;
 	console.log("Retrieving details for venue");
-	getEventDetails(venueId, function (error, result) {
+	getVenueDetailsFromDB(venueId, function (error, result) {
 	if(error || result == null) {
 		response.status(500).json({success: false, data: error});
 	} else {
@@ -356,7 +356,7 @@ function getDayFromDB(dayStart, dayEnd, callback) {
 // get details for an event
 function getEventDetailsFromDB(eventId, callback) {
 	console.log("Getting details for an event from DB");
-	var sql = "SELECT e.id, e.event_name, e.event_date, v.venue_name, a.first_name, e.notes FROM event e INNER JOIN venue v ON e.venue_id=v.id INNER JOIN author a ON e.author_id=a.id WHERE e.id = $1::INT";
+	var sql = "SELECT e.id AS id, e.event_name AS event_name, e.event_date AS event_date, e.venue_id AS venue_id, a.first_name AS first_name, e.notes AS notes FROM event e INNER JOIN author a ON e.author_id=a.id WHERE e.id = $1::INT";
 	var params = [eventId];
 	pool.query(sql, params, function(err, result) {
 	if (err) {
