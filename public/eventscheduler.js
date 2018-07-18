@@ -238,27 +238,26 @@ function loadEventDetails(eventId){
 	$.get("/getEventDetails", eventParams, function(result) {
 		if (result) {
 			$(document.getElementById(elementId)).empty();
-			$(document.getElementById(elementId)).append("<br>Added by: " 
+			$(document.getElementById(elementId)).append("Added by: " 
 				+ result[0].first_name + "<br>"
 				+ "Notes: " + result[0].notes + "<br>");
 			venueId = result[0].venue_id;
+			var venueParams = { venueId: venueId };
+			$.get("/getVenueDetails", venueParams, function(result) {
+				if (result) {
+					$(document.getElementById(elementId)).append("Location: <br>" 
+						+ result[0].venue_name + "<br>"
+						+ result[0].street + "<br>"
+						+ result[0].city + ", " + result[0].state 
+						+ " " + result[0].zip + "<br>"
+						+ "Phone: " + result[0].phone + "<br>"
+						+ "Email: " + result[0].email + "<br>");
+				} else {
+					$("#eventList").append("Error in venue details");
+				}
+			});
 		} else {
 			$("#eventList").append("Error in event details");
-		}
-	});
-
-	var venueParams = { venueId: venueId };
-	$.get("/getVenueDetails", venueParams, function(result) {
-		if (result) {
-			$(document.getElementById(elementId)).append("Location: <br>" 
-				+ result[0].venue_name + "<br>"
-				+ result[0].street + "<br>"
-				+ result[0].city + ", " + result[0].state 
-				+ " " + result[0].zip + "<br>"
-				+ "Phone: " + result[0].phone + "<br>"
-				+ "Email: " + result[0].email + "<br>");
-		} else {
-			$("#eventList").append("Error in venue details");
 		}
 	});
 }
