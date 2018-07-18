@@ -264,6 +264,7 @@ function loadEventDetails(eventId){
 }
 
 function emptyEventDetails(eventId) {
+	var elementId = "event" + eventId;
 	$(document.getElementById(elementId)).empty();
 }
 
