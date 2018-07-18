@@ -203,12 +203,25 @@ function stringToDate(dateString) {
  * hours and minutes from date
  ******************************************/
 function getHoursAndMinutes(longDate) {
-	var timeString = "" + longDate.getHours() + ":";
-	if(longDate.getMinutes() < 10){
-		timeString += "0" + longDate.getMinutes();
-	} else {
-		timeString += longDate.getMinutes();
+	var timeString = "";
+	var period = "";
+	if(longDate.getHours() > 12){
+		timeString += (longDate.getHours() - 12) + ":";
+		period += "PM";
+	} else if(longDate.getHours() == 12) {
+		timeString += longDate.getHours() + ":";
+		period += "PM";
+	} else{
+		timeString += longDate.getHours() + ":";
+		period += "AM";
 	}
+	
+	if(longDate.getMinutes() < 10){
+		timeString += "0" + longDate.getMinutes() + " " + period;
+	} else {
+		timeString += longDate.getMinutes() + " " + period;
+	}
+	
 	return timeString;
 }
 
