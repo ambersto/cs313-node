@@ -205,9 +205,9 @@ function stringToDate(dateString) {
 function getHoursAndMinutes(longDate) {
 	var timeString = "" + longDate.getHours() + ":";
 	if(longDate.getMinutes() < 10){
-		timeString.append("0" + longDate.getMinutes());
+		timeString += "0" + longDate.getMinutes();
 	} else {
-		timeString.append(longDate.getMinutes());
+		timeString += longDate.getMinutes();
 	}
 	return timeString;
 }
